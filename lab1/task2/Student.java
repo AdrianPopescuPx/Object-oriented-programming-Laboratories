@@ -1,27 +1,29 @@
 package lab1.task2;
 
 public class Student {
+    private int year;
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     private String name;
-    private Integer year = Integer.valueOf("0");
-
-
-    public void setName(String name_given) {
-        this.name = name_given;
-    }
-
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public void setYear(Integer year_given) {
-        this.year = year_given;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getYear() {
-        return this.year;
-    }
-
+    @Override
     public String toString() {
-        return "Student{name='" + this.name + "', year=" + this.year + "}";
+        return "Student{" +
+                "year=" + year +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

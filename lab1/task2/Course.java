@@ -1,45 +1,52 @@
 package lab1.task2;
 
-import java.util.ArrayList;
-
 public class Course {
     private String title;
     private String description;
-    private Student[] students = new Student[20];
 
-
-    public void setTitle(String title_given) {
-        this.title = title_given;
-    }
+    private Student[] students;
 
     public String getTitle() {
-        return this.title;
+        return title;
     }
 
-    public void setDescription(String description_given) {
-        this.description = description_given;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
-    public void setStudents(Student[] students_given) {
-        this.students = students_given;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public ArrayList<Student> filterYear(Integer year_needed) {
-        ArrayList<Student> listStudents = new ArrayList();
+    public Student[] getStudents() {
+        return students;
+    }
 
-        for (int i = 0; i < this.students.length; ++i) {
-            if (this.students[i].getYear().equals(year_needed)) {
-                listStudents.add(this.students[i]);
+    public void setStudents(Student[] students) {
+        this.students = students;
+    }
+
+    public Student[] FilterYear(int current_year) {
+        Student[] filter_students;
+        int nr = 0;
+        for(int i = 0; i < students.length; ++i) {
+            if(students[i].getYear() == current_year) {
+                nr++;
             }
         }
-        ArrayList<String> st = new ArrayList();
-        return listStudents;
+        filter_students = new Student[nr];
+        nr = 0;
+        for(int i = 0; i < students.length; ++i) {
+            if(students[i].getYear() == current_year) {
+                filter_students[nr] = new Student();
+                filter_students[nr] = students[i];
+                nr++;
+            }
+        }
+        return filter_students;
     }
-
-
-
 }

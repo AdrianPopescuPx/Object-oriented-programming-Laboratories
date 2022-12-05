@@ -1,39 +1,40 @@
 package lab1.task2;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Test {
+public class test {
+    private static Object toString;
 
     public static void main(String[] args) {
-        //Integer year = Integer.parseInt(args[0]);
-        int year = 1;
-        Course curs_poo = new Course();
-        Student[] lista_studenti = new Student[20];
+        int test_year = 2019;
+        // dc nu merge ? test_year = Integer.parseInt(args[0]);
+        Course course = new Course();
+        course.setTitle("Testare");
+        course.setDescription("Manuala");
+        course.setStudents(new Student[4]);
 
-        for(int i = 0; i < lista_studenti.length; ++i) {
-            lista_studenti[i] = new Student();
-            lista_studenti[i].setName("A" + Character.toString(65 + i));
-            lista_studenti[i].setYear(i % 4 + 1);
+        for(int i = 0; i < 4; ++i) {
+            course.getStudents()[i] = new Student();
         }
 
-        curs_poo.setTitle("Programare Orientata pe Obiecte");
-        curs_poo.setDescription("Asta e cel mai tare curs ever si laborantii sunt super de treaba <3");
-        curs_poo.setStudents(lista_studenti);
-        ArrayList<Student> final_list = curs_poo.filterYear(Integer.valueOf(year));
+        course.getStudents()[0].setName("Alex");
+        course.getStudents()[0].setYear(2016);
+        course.getStudents()[1].setName("Marius");
+        course.getStudents()[1].setYear(2019);
+        course.getStudents()[2].setName("Alina");
+        course.getStudents()[2].setYear(2017);
+        course.getStudents()[3].setName("Karina");
+        course.getStudents()[3].setYear(2019);
+        System.out.println(Arrays.toString(course.FilterYear(test_year)));
 
-        for(int i = 0; i < final_list.size(); ++i) {
-            System.out.println(((Student)final_list.get(i)).toString());
-        }
+        Student s1 = new Student();
+        s1.setName("Andrei");
+        s1.setYear(2015);
 
-        // Task 3
-        Student student1 = new Student();
-        Student student2 = new Student();
-        student1.setName("Alex");
-        student1.setYear(2);
-        student2.setName("Alex");
-        student2.setYear(2);
-        System.out.println(student1.equals(student2));
+        Student s2 = new Student();
+        s2.setName("Andrei");
+        s2.setYear(2015);
+        System.out.println(s1.equals(s2));
 
-        // Functia Equals returneaza false deoarece cele doua obiecte au adresa memoriei diferita!
     }
 }
