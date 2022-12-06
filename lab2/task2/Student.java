@@ -7,7 +7,7 @@ public class Student {
     public Student (int id, String name, String surname) {
         this.id = id;
         this.name = name;
-        this.surname = surname;  // Trebuia adaugat this.surname in loc de simplul "surname" pentru a face referire la instanta curenta
+        this.surname = surname;
     }
 
     // copy constructor - se copiaza un obiect
