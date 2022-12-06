@@ -10,9 +10,8 @@ public class Book {
         this.author = author;
         this.year = year;
     }
-
+    @Override
     public String toString() {
-        // TODO
-        return null;
+        return this.title + " " +  this.author + " " + this.year;
     }
 }
