@@ -17,7 +17,6 @@ public class Point {
     @Override
     public String toString() {
         return "(" + this.coord1 + " " + this.coord2 + ")";
-
     }
 
 }

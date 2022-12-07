@@ -10,6 +10,5 @@ public class Main {
         float[] array = {13.5F, 23, 24.5F , 50, -20, -45};
         Polygon poligon = new Polygon(array);
         System.out.println(poligon.toString());
-
     }
 }
