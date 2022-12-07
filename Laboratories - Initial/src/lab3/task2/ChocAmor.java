@@ -20,4 +20,7 @@ public class ChocAmor extends CandyBox {
     public String toString() {
         return "The " + super.toString() + " has volume " + this.getVolume();
     }
+    void printChocAmorDim() {
+        System.out.println("Lenght: " + this.lenght);
+    }
 }

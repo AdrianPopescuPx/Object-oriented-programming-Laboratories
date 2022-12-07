@@ -26,4 +26,7 @@ public class Lindt extends CandyBox {
     public String toString() {
         return "The " + super.toString() + " has volume " + this.getVolume();
     }
+    public void printLindtDim() {
+        System.out.println("Lenght: " + this.lenght + " Width: " + this.width + " Height: " + this.height);
+    }
 }

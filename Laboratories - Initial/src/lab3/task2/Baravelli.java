@@ -20,4 +20,7 @@ public class Baravelli extends CandyBox {
     public String toString() {
         return "The " + super.toString() + " has volume " + this.getVolume();
     }
+    void printBaravelliDim() {
+        System.out.println("Radius: " + this.radius + " Height: " + this.height);
+    }
 }
