@@ -4,7 +4,6 @@ import lab4.people.Student;
 import lab4.people.Teacher;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Database {
@@ -54,5 +53,8 @@ public class Database {
     public List<Student> getStudentsByGradeForSubject(String subject) {
         // TODO
         return null;
+    }
+    public void getDatabase(){
+
     }
 }

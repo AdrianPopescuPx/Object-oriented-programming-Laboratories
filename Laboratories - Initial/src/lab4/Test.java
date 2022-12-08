@@ -1,11 +1,6 @@
 package lab4;
 
-import lab4.database.Database;
-import lab4.database.Helpers;
-
-import static lab4.database.Subjects.*;
-
-public class Test {
+public class    Test {
     public static void main(String[] args) {
         // uncomment these lines when testing the implementation
         /*
