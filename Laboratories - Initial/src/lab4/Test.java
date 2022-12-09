@@ -1,9 +1,14 @@
 package lab4;
 
+import lab4.database.Database;
+import lab4.database.Helpers;
+
+import static lab4.database.Subjects.*;
+
 public class    Test {
     public static void main(String[] args) {
         // uncomment these lines when testing the implementation
-        /*
+
         // adding people to data base
         Helpers.addTeachers();
         Helpers.addStudents();
@@ -38,7 +43,7 @@ public class    Test {
         testStudent.getAllStudents().get(0).setFirstName("Ginel");
 
         // uncomment this, it should throw an error if getAllStudents() from Student is completely immutable
-        // testStudent.getAllStudents().add(new Student(testStudent));
+        //testStudent.getAllStudents().add(new Student(testStudent));
 
         // the data remains the same, without any updates from testStudent (no student named Ginel)
         System.out.println(testStudent.getAllStudents());
@@ -50,6 +55,6 @@ public class    Test {
 
         // checking number of instances
         System.out.println(Database.getNumberOfInstances());
-         */
+
     }
 }

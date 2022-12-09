@@ -4,17 +4,28 @@ import lab4.people.Student;
 import lab4.people.Teacher;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Database {
-    private List<Student> students = new ArrayList<>();
-    private List<Teacher> teachers = new ArrayList<>();
+    public static Database instance = null;
+    private final List<Student> students = new ArrayList<>();
+    private final List<Teacher> teachers = new ArrayList<>();
+    public static int instanceCount = 0;
 
-    // TODO: make it Singleton
+    public Database() {
+        instanceCount++;
+    }
+
+    public static Database getDatabase() {
+        if(instance == null) {
+            instance = new Database();
+        }
+        return instance;
+    }
 
     public static int getNumberOfInstances() {
-        // TODO
-        return 0;
+        return instanceCount;
     }
 
     public void addTeachers(List<Teacher> teachers) {
@@ -26,35 +37,59 @@ public class Database {
     }
 
     public List<Teacher> findTeachersBySubject(String subject) {
-        // TODO
-        return null;
+        List<Teacher> teachersByList = new ArrayList<>();
+        for(Teacher current: teachers) {
+            if(current.getSubjects().contains(subject)) {
+                teachersByList.add(new Teacher(current));
+            }
+        }
+        return teachersByList;
     }
 
     public List<Student> findAllStudents() {
-        // TODO
-        return null;
+        return students;
     }
 
     public List<Teacher> findAllTeachers() {
-        // TODO
-        return null;
+        return teachers;
     }
 
     public List<Student> getStudentsBySubject(String subject) {
-        // TODO
-        return null;
+        List<Student> studentsByList = new ArrayList<>();
+        for(Student current: students) {
+            if(current.getSubjects().containsKey(subject)) {
+                studentsByList.add(new Student(current));
+            }
+        }
+        return studentsByList;
     }
 
     public List<Student> getStudentsByAverageGrade() {
-        // TODO
-        return null;
+        students.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                if(o1.averageGrade() < o2.averageGrade()) {
+                    return 1;
+                }
+                return 0;
+            }
+
+        });
+        return students;
     }
 
     public List<Student> getStudentsByGradeForSubject(String subject) {
-        // TODO
-        return null;
-    }
-    public void getDatabase(){
+        List<Student> newList = this.getStudentsBySubject(subject);
+        newList.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                if(o1.getGradeForSubject(subject) < o2.getGradeForSubject(subject)) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
 
+        return newList;
     }
 }

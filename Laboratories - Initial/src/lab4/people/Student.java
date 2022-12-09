@@ -2,11 +2,9 @@ package lab4.people;
 
 import lab4.database.Database;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Student {
     private String firstName;
@@ -19,7 +17,11 @@ public class Student {
         this.subjects = subjects;
     }
 
-    // TODO: copy constructor
+    public Student(Student student) {
+        this.firstName = student.firstName;
+        this.lastName = student.lastName;
+        this.subjects = student.subjects;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -46,18 +48,19 @@ public class Student {
     }
 
     public double averageGrade() {
-        // TODO
-        return 0;
+        double calculate = 0;
+        for(Map.Entry<String, Integer> mapElements: this.getSubjects().entrySet()) {
+            calculate += mapElements.getValue();
+        }
+        return calculate;
     }
 
     public List<Teacher> getAllTeachers() {
-        // TODO
-        return null;
+        return Database.getDatabase().findAllTeachers();
     }
 
     public int getGradeForSubject(String subject) {
-        // TODO
-        return 0;
+        return subjects.get(subject);
     }
 
     @Override
@@ -67,27 +70,22 @@ public class Student {
     }
 
     public List<Teacher> getTeachersBySubject(String subject) {
-        // TODO
-        return null;
+        return Database.getDatabase().findTeachersBySubject(subject);
     }
 
     public List<Student> getAllStudents() {
-        // TODO
-        return null;
+        return Database.getDatabase().findAllStudents();
     }
 
     public List<Student> getStudentsBySubject(String subject) {
-        // TODO
-        return null;
+        return Database.getDatabase().getStudentsBySubject(subject);
     }
 
     public List<Student> getStudentsByAverageGrade() {
-        // TODO
-        return null;
+        return Database.getDatabase().getStudentsByAverageGrade();
     }
 
     public List<Student> getStudentsByGradeForSubject(String subject) {
-        // TODO
-        return null;
+        return Database.getDatabase().getStudentsByGradeForSubject(subject);
     }
 }
