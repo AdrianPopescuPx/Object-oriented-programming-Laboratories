@@ -42,4 +42,8 @@ public class Queue implements Container {
             container.pop();
         }
     }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
 }
