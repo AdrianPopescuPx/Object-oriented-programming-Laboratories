@@ -29,7 +29,7 @@ public class Dokuwiki implements Visitor{
     public void visit(UrlSegment url) {
         StringBuilder content = new StringBuilder();
         content.append("[[");
-        content.append(url.getLink());
+        content.append(url.getLink);
         content.append("|");
         content.append(url.getName());
         content.append("]]");

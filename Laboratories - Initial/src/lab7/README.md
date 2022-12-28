@@ -3,7 +3,7 @@
 The purpose of the first and main task is to use the Visitor pattern to generate two types of formatted text,
 one in dokuwiki syntax, one in markdown syntax.
 
-In the second task you need to use an API that has a visitor design. Follow the instructions from JavaFilesVisitor class.
+In the second task you need to use an API that has a documentVisitor design. Follow the instructions from JavaFilesVisitor class.
 
 ## Syntax specs
 

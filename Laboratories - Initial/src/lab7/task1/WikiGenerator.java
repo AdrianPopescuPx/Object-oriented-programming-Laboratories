@@ -1,5 +1,7 @@
 package lab7.task1;
 
+import lab7.task1.document.DokuWikiVisitor;
+import lab7.task1.document.MarkdownVisitor;
 import lab7.task1.document.TextSegment;
 
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 /**
  * Uses visitors to parse documents and provide dokuwiki and markdown outputs.
  */
-public class WikiGenerator {
+public class WikiGenerator{
 
     private final List<TextSegment> textSegments;
 
@@ -16,12 +18,23 @@ public class WikiGenerator {
     }
 
     public StringBuilder getDokuWikiDocument() {
-        // TODO apply dokuwiki visitor on the text segments
-        return null;
+        StringBuilder finalText = new StringBuilder();
+        DocumentVisitor v = new DokuWikiVisitor();
+
+        for (TextSegment text : textSegments) {
+            text.acceptDoku(v);
+            finalText.append(text.getChangedContent());
+        }
+        return finalText;
     }
 
     public StringBuilder getMarkdownDocument() {
-        // TODO apply Markdown visitor on the text segments
-        return null;
+        StringBuilder finalText = new StringBuilder();
+        DocumentVisitor v = new MarkdownVisitor();
+        for (TextSegment text: textSegments) {
+            text.acceptMark(v);
+            finalText.append(text.getChangedContent());
+        }
+        return finalText;
     }
 }
