@@ -51,15 +51,25 @@ public class Test {
     }
 
     private static void testConnect(Client client) {
-        // TODO
+        client.executeAction("connect", "0", "1");
+        client.executeAction("connect", "1", "0");
+        client.executeAction("connect", "0", "3");
+        client.showDiagram();
     }
 
     private static void testResize(Client client) {
-        // TODO
+        client.executeAction("resize", "0", "30");
+        client.executeAction("resize", "2", "10");
+        client.executeAction("resize", "1", "50");
+        client.executeAction("resize", "3", "40");
+        client.showDiagram();
     }
 
     private static void testAllCommands(Client client) {
-        // TODO
+        testDraw(client);
+        testTextAndColor(client);
+        testConnect(client);
+        testResize(client);
     }
 
     private static void testSimpleUndoRedo(Client client) {
@@ -80,6 +90,32 @@ public class Test {
     }
 
     private static void testComplexUndoRedo(Client client) {
-        // TODO
+        testDraw(client);
+        client.showDiagram();
+        client.undo();
+        client.showDiagram();
+        client.redo();
+        client.showDiagram();
+
+        testResize(client);
+        client.showDiagram();
+        client.undo();
+        client.showDiagram();
+        client.redo();
+        client.showDiagram();
+
+        testTextAndColor(client);
+        client.showDiagram();
+        client.undo();
+        client.showDiagram();
+        client.redo();
+        client.showDiagram();
+
+        testConnect(client);
+        client.showDiagram();
+        client.undo();
+        client.showDiagram();
+        client.redo();
+        client.showDiagram();
     }
 }

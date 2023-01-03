@@ -18,7 +18,7 @@ public class Client {
     }
 
     public void showDiagram() {
-        // TODO
+        diagramCanvas.show();
     }
 
     public void newDiagram() {
@@ -27,7 +27,7 @@ public class Client {
 
     public void executeAction(String commandName, String ...args) {
         // TODO - uncomment:
-        /*DrawCommand command;
+        DrawCommand command;
         try {
             CommandType commandType = CommandType.fromString(commandName);
             command = getCommand(commandType, args);
@@ -42,25 +42,51 @@ public class Client {
                 System.out.println("\t- " + type.text);
             }
             return;
-        }*/
-
-        // TODO - Execute the action
-
+        }
+        invoker.execute(command);
     }
 
     private DrawCommand getCommand(CommandType type, String ...args) throws IllegalArgumentException {
         // TODO factory method to create DrawCommand subclasses.
         // If there is an exception when parsing the string arguments (NumberFormatException) catch it and
         // throw an IllegalArgumentException
+        switch (type) {
+            case CHANGE_TEXT -> {
+                int id = Integer.parseInt(args[0]);
+                ChangeTextCommand changeTextCommand = new ChangeTextCommand(diagramCanvas.getComponent(id), args[1]);
+                return changeTextCommand;
+            }
+            case RESIZE -> {
+                int id = Integer.parseInt(args[0]);
+                Double percentage = Double.valueOf(args[1]);
+                ResizeCommand resizeCommand = new ResizeCommand(diagramCanvas.getComponent(id), percentage);
+                return resizeCommand;
+            }
+            case CHANGE_COLOR -> {
+                String color = args[1];
+                int id = Integer.parseInt(args[0]);
+                ChangeColorCommand changeColorCommand = new ChangeColorCommand(diagramCanvas.getComponent(id), color);
+                return changeColorCommand;
+            }
+            case CONNECT -> {
+                int id = Integer.parseInt(args[0]);
+                ConnectComponentsCommand connectComponentsCommand = new ConnectComponentsCommand(diagramCanvas.getComponent(id), args[1]);
+                return connectComponentsCommand;
+            }
+            case DRAW_RECTANGLE -> {
+                DrawRectangleCommand drawRectangleCommand = new DrawRectangleCommand(diagramCanvas);
+                return drawRectangleCommand;
+            }
+        }
 
         return null;
     }
 
     public void undo(){
-        // TODO
+        invoker.undo();
     }
 
     public void redo() {
-        // TODO
+        invoker.redo();
     }
 }

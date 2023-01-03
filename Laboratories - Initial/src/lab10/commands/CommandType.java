@@ -3,7 +3,7 @@ package lab10.commands;
 /**
  * Supported commands
  */
-public enum CommandType {
+public enum     CommandType {
     DRAW_RECTANGLE("draw rectangle"),
     CHANGE_COLOR("change color"),
     RESIZE("resize"),

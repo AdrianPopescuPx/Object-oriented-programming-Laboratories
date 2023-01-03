@@ -3,13 +3,78 @@ package lab10.builder;
 import java.util.ArrayList;
 
 public class House {
+	public String getLocation() {
+		return location;
+	}
 
-	// TODO: write optional and mandatory facilities to have in a house
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
+	public int getFloors() {
+		return floors;
+	}
 
-	// TODO: complete the private constructor
+	public void setFloors(int floors) {
+		this.floors = floors;
+	}
+
+	public boolean isTermalOption() {
+		return termalOption;
+	}
+
+	public void setTermalOption(boolean termalOption) {
+		this.termalOption = termalOption;
+	}
+
+	public int getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(int rooms) {
+		this.rooms = rooms;
+	}
+
+	public boolean isSecurity() {
+		return security;
+	}
+
+	public void setSecurity(boolean security) {
+		this.security = security;
+	}
+
+	public boolean isPool() {
+		return pool;
+	}
+
+	public void setPool(boolean pool) {
+		this.pool = pool;
+	}
+
+	@Override
+	public String toString() {
+		return "House{" +
+				"location='" + location + '\'' +
+				", floors=" + floors +
+				", termalOption=" + termalOption +
+				", rooms=" + rooms +
+				", security=" + security +
+				", pool=" + pool +
+				'}';
+	}
+
+	private String location;
+	private int floors;
+	private boolean termalOption;
+	private int rooms;
+	private boolean security;
+	private boolean pool;
 	private House(HouseBuilder builder) {
-
+		this.location = builder.location;
+		this.termalOption = builder.termalOption;
+		this.rooms = builder.rooms;
+		this.security = builder.security;
+		this.pool = builder.pool;
 	}
 
 	// TODO: generate getters
@@ -20,21 +85,30 @@ public class House {
 
 	public static class HouseBuilder {
 
-		// TODO: write same facilities
+		private String location;
+		private int floors;
+		private boolean termalOption;
+		private int rooms;
+		private boolean security;
+		private boolean pool;
 
-
-		// TODO: complete the house builder constructor only with the mandatory facilities
-		public HouseBuilder() {
-
+		public HouseBuilder(String location, int floors, boolean termalOption, int rooms) {
+			this.location = location;
+			this.floors = floors;
+			this.termalOption = termalOption;
+			this.rooms = rooms;
 		}
 
-		// TODO: add the optional facilities in a builder design
-
-
-		// TODO: complete the final build method
+		public HouseBuilder security(boolean security) {
+			this.security = security;
+			return this;
+		}
+		public HouseBuilder pool(boolean pool) {
+			this.pool = pool;
+			return this;
+		}
 		public House build() {
-
-			return null; // change this
+			return new House(this);
 		}
 
 		// TODO: test functionality in a Main class

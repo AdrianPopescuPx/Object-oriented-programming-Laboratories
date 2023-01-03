@@ -9,7 +9,7 @@ import java.util.List;
  * It is the "receiver" of commands.
  */
 public class DiagramCanvas {
-    private List<DiagramComponent> components = new ArrayList<>();
+    public List<DiagramComponent> components = new ArrayList<>();
 
     public void addComponent(DiagramComponent diagramComponent) {
         components.add(diagramComponent);

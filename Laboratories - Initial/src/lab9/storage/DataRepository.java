@@ -1,6 +1,8 @@
 package lab9.storage;
 
 
+import java.util.Observable;
+
 /**
  * Persists sensor data. Observable, its observers are notified when data is added it to.
  */
