@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 public class TestMultiMapValue {
     private MultiMapValue<String, String> map;
 
@@ -37,36 +39,58 @@ public class TestMultiMapValue {
 
     @Test
     public void testAddTwoElements() {
-        // TODO
+        map.add("key", "value1");
+        map.add("keylo", "ana are mere");
+        Assertions.assertFalse(map.isEmpty());
+        Assertions.assertEquals(2, map.size());
+        Assertions.assertEquals(1, map.getValues("key").size());
+        Assertions.assertEquals(1, map.getValues("keylo").size());
     }
 
     @Test
     public void testGetFirst() {
-        // TODO
+        map.add("key", "value1");
+        map.add("key", "value2");
+        Assertions.assertEquals("value1", map.getFirst("key"));
     }
 
     @Test
     public void testContainsKey() {
-        // TODO
+        map.add("key", "value1");
+        map.add("keylo", "ana are mere");
+        Assertions.assertTrue(map.containsKey("keylo"));
     }
 
     @Test
     public void testSize() {
-        // TODO
+        map.add("key", "value1");
+        map.add("key", "value2");
+        Assertions.assertEquals(2, map.size());
     }
 
     @Test
     public void testRemoveKey() {
-        // TODO
+        map.add("key", "value1");
+        map.add("keylo", "value2");
+        map.remove("keylo");
+        Assertions.assertEquals(1, map.size());
     }
 
     @Test
     public void testAddAllWithList() {
-        // TODO
+        ArrayList<String> test = new ArrayList<>();
+        test.add("Marian");
+        test.add("Landar");
+        map.addAll("key", test);
+        Assertions.assertEquals("Marian", map.getFirst("key"));
     }
 
     @Test
     public void testAddAllWithMultiMapValue() {
-        // TODO
+        map.add("key", "value1");
+        map.add("keylo", "value2");
+        MultiMapValue<String, String> map2 = new MultiMapValue<>();
+        map2.addAll(map);
+        Assertions.assertEquals(2, map2.size());
     }
 }
