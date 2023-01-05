@@ -16,31 +16,50 @@ public class BankReport {
 
     public static int getNumberOfCustomers(Bank bank) {
         // All the customers that have accounts at the bank
-
-        return 0;
+        return bank.getClients().size();
     }
 
     public static int getNumberOfAccounts(Bank bank) {
         // Accounts of all the customers of the bank
-
-        return 0;
+        int sum = 0;
+        for(Business c : bank.getClients()) {
+            Iterator<Employee> iterator = c.getEmployees().iterator();
+            while(iterator.hasNext()) {
+                sum += iterator.next().getAccounts().size();
+            }
+        }
+        return sum;
     }
 
     public static SortedSet<Employee> getCustomersSorted(Bank bank) {
         // Display the set of customers in alphabetical order
-
-        return null;
+        SortedSet<Employee> finalSet = new TreeSet<>();
+        for(Business c : bank.getClients()) {
+            Set<Employee> unmodifiableEmployees = Set.copyOf(c.getEmployees());
+            Comparator<Employee> nameComparator = Comparator.comparing(Employee::getName);
+            SortedSet<Employee> sortedEmployees = new TreeSet<>(nameComparator);
+            sortedEmployees.addAll(unmodifiableEmployees);
+            finalSet.addAll(sortedEmployees);
+        }
+        return finalSet;
     }
 
     public static double getTotalSumInAccounts(Bank bank) {
         // Sum of all customers' accounts balances
-
-        return 0.0d;
+        Double sum = 0.0;
+        for(Business c : bank.getClients()) {
+            Iterator<Employee> iterator = c.getEmployees().iterator();
+            while(iterator.hasNext()) {
+                for(Account s : iterator.next().getAccounts()) {
+                    sum += s.getBalance();
+                }
+            }
+        }
+        return sum;
     }
 
     public static SortedSet<Employee> getAccountsSortedBySum(Bank bank) {
         // The set of all accounts, ordered by current account balance
-
         return null;
     }
 

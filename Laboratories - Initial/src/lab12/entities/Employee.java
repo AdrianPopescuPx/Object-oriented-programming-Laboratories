@@ -58,15 +58,13 @@ public class Employee {
 	}
 	
 	public Set<Account> getAccounts() {
-        // TODO: get an immutable set of data
-        
-        return null;
+        Set<Account> immutableSet = Collections.unmodifiableSet(accounts);
+        return immutableSet;
     }
 	
 	public List<Project> getProjects() {
-        // TODO: get an immutable list of data
-        
-        return null;
+        List<Project> immutableList = Collections.unmodifiableList(projects);
+        return immutableList;
     }
     
     @Override

@@ -26,15 +26,13 @@ public class Business {
     }
     
     public Set<Employee> getEmployees() {
-		// TODO: get an immutable set of data
-
-		return null;
+        Set<Employee> immutableSet = Collections.unmodifiableSet(employees);
+        return immutableSet;
     }
     
     public List<Project> getProjects() {
-		// TODO: get an immutable list of data
-
-		return null;
+		List<Project> immutableSet = Collections.unmodifiableList(projects);
+        return immutableSet;
     }
 
 }

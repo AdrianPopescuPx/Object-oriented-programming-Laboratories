@@ -16,8 +16,7 @@ public class Bank {
     }
     
     public Set<Business> getClients() {
-		// TODO: get an immutable set of data
-
-		return null;
+		Set<Business> immutableSet = Collections.unmodifiableSet(clients);
+		return immutableSet;
 	}
 }
